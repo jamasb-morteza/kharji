@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="card my-4">
-        <form action="{{route('expends.store')}}" method="post">
+        <form action="{{route('expends.store')}}" method="post" enctype="multipart/form-data">
             <div class="card-body row">
 
                 {{csrf_field()}}
@@ -21,7 +21,7 @@
                 <div class="form-group col-md-6 col-xs-12" dir="ltr">
                     <label for="spend_at_date">تاریخ:</label>
                     <input class="form-control jalali_date_picker" id="spend_at_date" name="spend_at_date"
-                           value="{{old('spend_at_date')}}" data-jdp/>
+                           value="{{old('spend_at_date',\Morilog\Jalali\Jalalian::now()->format('Y/m/d'))}}" data-jdp/>
                 </div>
                 <div class="form-group col-md-6 col-xs-12" dir="ltr">
                     <label for="spend_at_time">زمان:</label>
@@ -34,16 +34,23 @@
                 </div>
                 <div class="form-group col-12">
                     <label for="attachments">پیوست‌ها:</label>
-                    <input type="file" class="form-control-file">
+                    <input type="file" name="attachments[]" class="form-control-file">
                 </div>
-                <div id="attachments-container"></div>
+                <div class="col-12">
+                    <div id="attachments-container"></div>
+                </div>
+
 
                 <span><a id="add-attachment-btn" class="btn btn-link text-success"><i class="fa fa-plus"></i></a></span>
 
             </div>
             <div class="card-footer">
-                <div class="form-group d-flex justify-content-end">
-                    <button class="btn btn-success px-4">ثبت</button>
+                <div class="form-group d-flex justify-content-between">
+                    <a href="{{route('expends.index')}}" class="btn btn-danger px-4">لغو</a>
+                    <div>
+                        <button class="btn btn-success px-4" value="submit">ثبت</button>
+                    </div>
+
                 </div>
             </div>
         </form>

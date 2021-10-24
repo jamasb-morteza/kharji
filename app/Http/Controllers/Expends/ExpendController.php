@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Expends;
 
 use App\Http\Controllers\Controller;
 use App\Models\Expend;
+use App\Models\File;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
@@ -30,6 +31,13 @@ class ExpendController extends Controller
 
     public function store(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'attachments' => 'max::50',
+            'attachments.*' => 'mimes:jpg,jpeg,pdf,gif,png',
+            'price' => 'numeric'
+        ]);
+
         $carbon_spend_at = !empty($request->spend_at_date) ?
             Jalalian::fromFormat('Y/m/d', $request->spend_at_date)->toCarbon() :
             Carbon::today();
@@ -42,8 +50,19 @@ class ExpendController extends Controller
             'description' => $request->description,
             'spend_at' => $carbon_spend_at ?? Carbon::now()
         ]);
-
-        return redirect()->back()->with('action-result', [
+        $insert = [];
+        if ($request->hasfile('attachments')) {
+            foreach ($request->file('attachments') as $key => $file) {
+                $name = "expend-{$expend->id}-{$key}" . Jalalian::now()->format('Y-m-d_H-i-s') . "." . $file->clientExtension();
+                $path = $file->storeAs('public/files', $name);
+                $insert[$key]['file_name'] = $name;
+                $insert[$key]['file_path'] = $path;
+                $insert[$key]['file_size'] = $file->getSize();
+                $insert[$key]['file_type'] = $file->getMimeType();
+            }
+        }
+        $expend->attachments()->createMany($insert);
+        return redirect()->route('expends.index')->with('action-result', [
             'success' => true,
             'message' => __('expends.expend created successfully')
         ]);
