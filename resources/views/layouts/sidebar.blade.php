@@ -1,5 +1,3 @@
-<ul class="c-sidebar-nav">
-    @yield('sidebar')
-    <li></li>
-    {{ $sidebar ?? '' }}
-</ul>
+<x-sidebar-nav>
+
+</x-sidebar-nav>

@@ -6,11 +6,12 @@
     </li>
 </ul>
 
-<ul class="c-header-nav ml-auto mr-4">
+<ul class="c-header-nav mr-auto ml-4">
     <!-- Authentication Links -->
     @auth
         <x-dropdown id="navbarDropdown">
             <x-slot name="trigger">
+                <img src="{{Auth::user()->avatar}}" alt="" class="img-circle">
                 {{ Auth::user()->name }}
             </x-slot>
 
@@ -18,12 +19,10 @@
                 <!-- Authentication -->
                 <form method="POST" id="logout-form" action="{{ route('logout') }}">
                     @csrf
+                    <a class="dropdown-item" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">{{ __('Log Out') }}</a>
                 </form>
-                <x-dropdown-link href="{{ route('logout') }}"
-                                 onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                    {{ __('Log Out') }}
-                </x-dropdown-link>
+
             </x-slot>
         </x-dropdown>
     @endauth
