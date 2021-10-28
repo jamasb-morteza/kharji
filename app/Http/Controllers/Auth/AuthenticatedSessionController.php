@@ -80,7 +80,6 @@ class AuthenticatedSessionController extends Controller
         } else {
             // create a new user
             $new_user = User::create(MapGoogleUserData::handle($user));
-
             auth()->login($new_user, true);
         }
         return redirect()->to('/dashboard');

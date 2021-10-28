@@ -2,6 +2,8 @@
 
 namespace App\Http\Actions;
 
+use Illuminate\Support\Facades\Hash;
+
 class MapGoogleUserData
 {
     public static function handle(\Laravel\Socialite\Contracts\User $google_user)
@@ -15,7 +17,8 @@ class MapGoogleUserData
             'email' => $google_user->getEmail(),
             'google_id' => $google_user->getId(),
             'avatar' => $google_user->getAvatar(),
-            'avatar_original' => $google_user->getAvatar()
+            'avatar_original' => $google_user->getAvatar(),
+            'password' => Hash::make(config('kharji.default_password'))
         ];
     }
 }
