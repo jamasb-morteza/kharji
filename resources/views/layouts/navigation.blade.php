@@ -11,7 +11,7 @@
     @auth
         <x-dropdown id="navbarDropdown">
             <x-slot name="trigger">
-                <img src="{{Auth::user()->avatar}}" alt="" class="img-circle">
+                <img src="{{Auth::user()->avatar}}" alt="" class="img img-circle img-thumbnail">
                 {{ Auth::user()->name }}
             </x-slot>
 
