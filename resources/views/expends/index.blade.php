@@ -28,13 +28,13 @@
                 <tbody>
                 @foreach($expends as $expend)
                     <tr>
-                        <th>#</th>
-                        <th><span dir="ltr">{{$expend->jalali_spend_at->format('Y/m/d H:i:s')}}</span></th>
-                        <th>{{$expend->user->name}}</th>
-                        <th>{{$expend->title}}</th>
-                        <th>{{number_format($expend->price)}}</th>
-                        <th>{{$expend->description}}</th>
-                        <th>
+                        <td>#</td>
+                        <td><span dir="ltr">{{$expend->jalali_spend_at->format('Y/m/d H:i:s')}}</span></td>
+                        <td>{{$expend->user->name}}</td>
+                        <td>{{$expend->title}}</td>
+                        <td>{{number_format($expend->price)}}</td>
+                        <td>{{$expend->description}}</td>
+                        <td class="d-inline-flex">
                             <a href="#" class="btn btn-link text-primary">
                                 <i class="fa fa-edit"></i>
                             </a>
@@ -43,7 +43,7 @@
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </form>
-                        </th>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

@@ -25,7 +25,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      *
-     * @param  \App\Http\Requests\Auth\LoginRequest  $request
+     * @param \App\Http\Requests\Auth\LoginRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LoginRequest $request)
@@ -40,7 +40,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Destroy an authenticated session.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Request $request)
@@ -54,14 +54,16 @@ class AuthenticatedSessionController extends Controller
         return redirect('/');
     }
 
-    public function oAuthGoogleLogin(){
+    public function oAuthGoogleLogin()
+    {
         return Socialite::driver('google')->redirect();
     }
 
-    public function oAuthGoogleCallback(){
+    public function oAuthGoogleCallback()
+    {
         try {
             $user = Socialite::driver('google')->user();
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return redirect('login');
         }
         // only allow people with @company.com to login
@@ -71,18 +73,14 @@ class AuthenticatedSessionController extends Controller
 
         // check if they're an existing user
         $existingUser = User::where('email', $user->email)->first();
-        if($existingUser){
+        if ($existingUser) {
             // log them in
             auth()->login($existingUser, true);
         } else {
             // create a new user
-            $new_user = User::create([
-                'name'=>$user->name,
-                'email'=>$user->name,
-                'google_id'=>$user->name,
-                'avatar'=>$user->name,
-                'avatar_original'=>$user->name,
-            ]);
+            $google_user = $user->user;
+
+            $new_user = User::create();
 
             auth()->login($new_user, true);
         }

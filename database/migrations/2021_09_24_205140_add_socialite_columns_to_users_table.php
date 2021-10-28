@@ -15,9 +15,9 @@ class AddSocialiteColumnsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('google_id')->nullable();
-            $table->string('avatar')->nullable();
-            $table->string('avatar_original')->nullable();
+            $table->string('google_id')->after('profile_photo_path')->nullable();
+            $table->string('avatar')->after('google_id')->nullable();
+            $table->string('avatar_original')->after('avatar')->nullable();
         });
     }
 
