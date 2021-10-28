@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Actions\MapGoogleUserData;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
@@ -78,9 +79,7 @@ class AuthenticatedSessionController extends Controller
             auth()->login($existingUser, true);
         } else {
             // create a new user
-            $google_user = $user->user;
-
-            $new_user = User::create();
+            $new_user = User::create(MapGoogleUserData::handle($user));
 
             auth()->login($new_user, true);
         }
