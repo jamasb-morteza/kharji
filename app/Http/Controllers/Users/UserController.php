@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\HasJalaliDates;
 use Illuminate\Http\Request;
@@ -33,6 +34,17 @@ class UserController extends Controller
     public function create()
     {
         //
+    }
+
+    public function getJsonUsers(Request $request)
+    {
+        $users = User::
+        where('name', 'like', "%{$request->term}%")
+            ->orWhere('email', 'like', "%{$request->term}%")
+            ->get();
+
+
+        return response()->json(['results'=>UserResource::collection($users)]);
     }
 
     /**

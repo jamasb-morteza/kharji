@@ -1,0 +1,29 @@
+@import url('../fonts/iransans/font-loader.css');
+
+*, body, .font-sans {
+    font-family: IRANSansWeb, Tahoma, "Segoe UI", Arial, sans-serif;
+    font-size: 0.85rem;
+}
+
+.w-20 {
+    width: 20% !important;
+}
+
+.w-15 {
+    width: 15% !important;
+}
+
+.w-12 {
+    width: 12% !important;
+}
+
+.w-10 {
+    width: 10% !important;
+}
+
+.w-35px {
+    max-width: 35px !important;
+}
+.w-30px {
+    max-width: 30px !important;
+}

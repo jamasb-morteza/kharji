@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
+        "livewire/livewire": "^2.7",
         "morilog/jalali": "^3.2",
         "nascent-africa/jetstrap": "^2.5",
         "nwidart/laravel-modules": "^8.2"

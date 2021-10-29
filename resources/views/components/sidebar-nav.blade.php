@@ -5,7 +5,12 @@
         href="{{route('users.index')}}"
         :selected="$attributes['selected-side-nav']==='users'"
     />
-
+    <x-sidenav-item
+        iclass="fa fa-users"
+        title="تیم‌ها"
+        href="{{route('team.index')}}"
+        :selected="$attributes['selected-side-nav']==='users'"
+    />
     <x-sidenav-item
         iclass="fas fa-money-bill"
         title="مخارج"

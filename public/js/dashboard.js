@@ -112,8 +112,7 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coreui_coreui_dist_js_coreui_bundle_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/coreui/dist/js/coreui.bundle.min */ "./node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js");
 /* harmony import */ var _coreui_coreui_dist_js_coreui_bundle_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_coreui_coreui_dist_js_coreui_bundle_min__WEBPACK_IMPORTED_MODULE_0__);
- // import 'jquery/dist/jquery.min.js';
-// window.$ = window.jQuery = require('jquery');
+
 })();
 
 /******/ })()

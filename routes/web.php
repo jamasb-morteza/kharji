@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Expends\ExpendController;
 use App\Http\Controllers\Users\UserController;
+use App\Http\Controllers\Team\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,9 +37,22 @@ Route::group(['middleware' => 'auth'], function ($router) {
 
     });
 
+    $router->group(['prefix' => 'teams', 'namespace' => 'Team'], function ($router) {
+        $router->get('/', [TeamController::class, 'index'])->name('team.index');
+        $router->get('/create', [TeamController::class, 'create'])->name('team.create');
+        $router->get('/{team_id}/edit', [TeamController::class, 'edit'])->name('team.edit');
+        $router->get('/{team_id}', [TeamController::class, 'show'])->name('team.show');
+
+        $router->post('/', [TeamController::class, 'store'])->name('team.store');
+        $router->put('/{team_id}', [TeamController::class, 'update'])->name('team.update');
+        $router->delete('/{team_id}', [TeamController::class, 'destroy'])->name('team.destroy');
+
+    });
+
     $router->group(['prefix' => 'users', 'namespace' => 'Users'], function ($router) {
         $router->get('/', [UserController::class, 'index'])->name('users.index');
         $router->get('/create', [UserController::class, 'create'])->name('users.create');
+        $router->get('/json', [UserController::class, 'getJsonUsers'])->name('users.json');
         $router->get('/{user_id}/edit', [UserController::class, 'edit'])->name('users.edit');
         $router->get('/{user_id}', [UserController::class, 'show'])->name('users.show');
 

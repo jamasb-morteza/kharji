@@ -9,14 +9,18 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('/plugins/jalali_date_picker/jalalidatepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/plugins/select2/dist/css/select2.min.css')}}">
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="{{ mix('js/dashboard.js') }}" defer></script>
     <script src="{{asset('/js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{ mix('js/dashboard.js') }}" defer></script>
     <script src="{{asset('/plugins/jalali_date_picker/jalalidatepicker.min.js')}}"></script>
     <script src="{{asset('/plugins/autoNumeric4.2/autonumeric4.1.js')}}"></script>
+    <script src="{{asset('/plugins/select2/dist/js/select2.min.js')}}"></script>
+    <script src="{{asset('/js/kharji.js')}}"></script>
 </head>
 <body class="c-app font-sans antialiased">
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
@@ -46,9 +50,16 @@
 
         @include('layouts.navigation')
 
-        <div class="c-subheader px-3 py-3">
-            <div class="container">
-                {{ $header }}
+        <div class="c-subheader justify-content-between px-3">
+            <ol class="breadcrumb border-0 m-0 px-0 px-md-3">
+                @if(isset($header_breadcrumbs))
+                    {!! $header_breadcrumbs !!}
+                @endif
+            </ol>
+            <div class="c-subheader-nav d-md-down-none mfe-2">
+                @if(isset($subheader_nav_link))
+                    {!! $subheader_nav_link !!}
+                @endif
             </div>
         </div>
     </header>
