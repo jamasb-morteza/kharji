@@ -38,25 +38,22 @@
 </div>
 <div class="c-wrapper">
     <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
-        <button class="c-header-toggler c-class-toggler d-lg-none mr-auto" type="button" data-target="#sidebar"
+        <button class="c-header-toggler c-class-toggler d-lg-none ml-auto" type="button" data-target="#sidebar"
                 data-class="c-sidebar-show">
             <span class="c-header-toggler-icon"></span>
         </button>
-
         <button class="c-header-toggler c-class-toggler ml-3 d-md-down-none" type="button" data-target="#sidebar"
                 data-class="c-sidebar-lg-show" responsive="true">
             <span class="c-header-toggler-icon"></span>
         </button>
-
         @include('layouts.navigation')
-
         <div class="c-subheader justify-content-between px-3">
             <ol class="breadcrumb border-0 m-0 px-0 px-md-3">
                 @if(isset($header_breadcrumbs))
                     {!! $header_breadcrumbs !!}
                 @endif
             </ol>
-            <div class="c-subheader-nav d-md-down-none mfe-2">
+            <div class="c-subheader-nav mfe-2">
                 @if(isset($subheader_nav_link))
                     {!! $subheader_nav_link !!}
                 @endif

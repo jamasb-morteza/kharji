@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Team;
 
 use App\Http\Controllers\Controller;
+use App\Http\Features\Team\StoreTeamFeature;
 use App\Models\Team\Team;
 use Illuminate\Http\Request;
 
@@ -23,11 +24,10 @@ class TeamController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        //
         return view('teams.create');
     }
 
@@ -35,12 +35,12 @@ class TeamController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
-
+        $team = StoreTeamFeature::handle($request);
+        return redirect()->back()->with('action-result', ['success' => true, 'message' => __('Team Created')]);
     }
 
     /**

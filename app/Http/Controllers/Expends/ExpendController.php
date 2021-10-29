@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Expends;
 use App\Http\Controllers\Controller;
 use App\Models\Expend;
 use App\Models\File;
+use App\Models\Team\Team;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
@@ -26,7 +27,9 @@ class ExpendController extends Controller
 
     public function create()
     {
-        return view('expends.create');
+        $user = auth()->user();
+        $teams = $user->teams;
+        return view('expends.create', compact('teams'));
     }
 
     public function store(Request $request)

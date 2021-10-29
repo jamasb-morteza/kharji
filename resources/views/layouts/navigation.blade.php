@@ -1,10 +1,10 @@
-<ul class="c-header-nav d-md-down-none">
+{{--<ul class="c-header-nav">
     <li class="c-header-nav-item px-3">
         <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
             {{ __('Dashboard') }}
         </x-nav-link>
     </li>
-</ul>
+</ul>--}}
 <ul class="c-header-nav mfs-auto mfe-1">
     <!-- Authentication Links -->
     @auth

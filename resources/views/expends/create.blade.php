@@ -1,15 +1,24 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="h4 font-weight-bold">
-            {{ __('Expends') }}
-        </h2>
+    <x-slot name="header_breadcrumbs">
+        <x-kharji.breadcrumb-item :title="__('Dashboard')" href="/"/>
+        <x-kharji.breadcrumb-item :title="__('Expends')" :href="route('expends.index')"/>
+        <x-kharji.breadcrumb-item :title="__('Create New')" :active="true"/>
     </x-slot>
 
     <div class="card my-4">
         <form action="{{route('expends.store')}}" method="post" enctype="multipart/form-data">
+            {{csrf_field()}}
+            <div class="row">
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="team">تیم</label>
+                    <select name="team" id="team" class="form-control">
+                        @foreach($teams as $team)
+                            <option value="{{$team->slug}}">{{$team->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             <div class="card-body row">
-
-                {{csrf_field()}}
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="title">عنوان:</label>
                     <input class="form-control" id="title" name="title" value="{{old('title')}}"/>

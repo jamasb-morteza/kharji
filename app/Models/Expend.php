@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Team\Team;
 use App\Traits\HasJalaliDates;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,5 +23,10 @@ class Expend extends Model
     public function attachments()
     {
         return $this->morphMany(File::class, 'fileable');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 }

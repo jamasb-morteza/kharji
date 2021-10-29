@@ -1,14 +1,10 @@
 <x-app-layout>
-    <x-slot name="header" class="d-flex justify-content-around">
-        <h2 class="h4 font-weight-bold fa-pull-right d-inline">
-            {{ __('Expends') }}
-        </h2>
-        <div class="fa-pull-left d-inline">
-            <a href="{{route('expends.create')}}" class="text-success">
-                <i class="fa fa-plus"></i>
-                <span>خرج جدید</span>
-            </a>
-        </div>
+    <x-slot name="header_breadcrumbs">
+        <x-kharji.breadcrumb-item :title="__('Dashboard')" href="/"/>
+        <x-kharji.breadcrumb-item :title="__('Expends')" :active="true"/>
+    </x-slot>
+    <x-slot name="subheader_nav_link">
+        <x-kharji.subheader-nav-link class="text-success" :href="route('expends.create')" fa-icon="fa fa-plus" :title="__('New Expend')"/>
     </x-slot>
 
     <div class="card my-4">
