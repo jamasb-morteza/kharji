@@ -38,13 +38,12 @@ class UserController extends Controller
 
     public function getJsonUsers(Request $request)
     {
-        $users = User::
-        where('name', 'like', "%{$request->term}%")
+        $users = User::notSelf()
+            ->where('name', 'like', "%{$request->term}%")
             ->orWhere('email', 'like', "%{$request->term}%")
             ->get();
 
-
-        return response()->json(['results'=>UserResource::collection($users)]);
+        return response()->json(['results' => UserResource::collection($users)]);
     }
 
     /**

@@ -12,7 +12,7 @@
             <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                aria-expanded="false">
                 <div class="c-avatar">
-                    <img class="c-avatar-img" src="{{Auth::user()->avatar}}" alt="{{Auth::user()->email}}">
+                    <img class="c-avatar-img" src="{{Auth::user()->default_profile}}" alt="{{Auth::user()->email}}">
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right pt-0">
@@ -21,7 +21,7 @@
                 </div>
                 <a class="dropdown-item" href="#">
                     <i class="fa fa-user c-icon mfe-2"></i>
-                    <span>{{ __('Log Profile') }}</span>
+                    <span>{{ __('Profile') }}</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <form method="POST" id="logout-form" action="{{ route('logout') }}">

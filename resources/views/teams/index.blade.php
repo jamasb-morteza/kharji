@@ -38,6 +38,7 @@
                                 <i class="fa fa-edit"></i>
                             </a>
                             <form action="{{route('team.destroy',['team_id'=>$team->id])}}" method="post">
+                                @csrf
                                 @method('delete')
                                 <button class="btn btn-link text-danger">
                                     <i class="fa fa-trash"></i>

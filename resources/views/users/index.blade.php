@@ -12,8 +12,8 @@
                 <tr>
                     <th>#</th>
                     <th>{{__('Created At')}}</th>
-                    <th>{{__('name')}}</th>
-                    <th>{{__('email')}}</th>
+                    <th>{{__('Name')}}</th>
+                    <th>{{__('Email')}}</th>
                     <th>{{__('Actions')}}</th>
                 </tr>
                 </thead>
@@ -21,7 +21,7 @@
                 @foreach($users as $user)
                     <tr>
                         <th>#</th>
-                        <th>{{$user->created_at}}</th>
+                        <th dir="ltr">{{$user->jalali_created_at}}</th>
                         <th>{{$user->name}}</th>
                         <th>{{$user->email}}</th>
                         <th class="d-inline-flex">

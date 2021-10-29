@@ -1,8 +1,8 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="h4 font-weight-bold">
-            {{ __('Expends') }}
-        </h2>
+    <x-slot name="header_breadcrumbs">
+        <x-kharji.breadcrumb-item :title="__('Dashboard')" href="/"/>
+        <x-kharji.breadcrumb-item :title="__('Users')" :href="route('users.index')"/>
+        <x-kharji.breadcrumb-item :title="__('New User')" :active="true"/>
     </x-slot>
 
     <div class="card my-4">
@@ -35,8 +35,8 @@
     </div>
     @push('scripts')
         <script>
-            $(document).ready(function (){
-                $('#add-attachment-btn').on('click',function (event){
+            $(document).ready(function () {
+                $('#add-attachment-btn').on('click', function (event) {
                     $('#attachments-container').append(`
                     <div class="form-group">
                         <input type="file" name="attachments[]" />
@@ -44,7 +44,7 @@
                     </div>
                     `);
                 })
-                $(document).on('click','.delete-attachment',function (event){
+                $(document).on('click', '.delete-attachment', function (event) {
                     $(event.currentTarget).parents('.form-group').remove()
                 })
             });

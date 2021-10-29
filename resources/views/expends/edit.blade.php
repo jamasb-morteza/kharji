@@ -1,8 +1,8 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="h4 font-weight-bold">
-            {{ __('Expends') }}
-        </h2>
+    <x-slot name="header_breadcrumbs">
+        <x-kharji.breadcrumb-item :title="__('Dashboard')" href="/"/>
+        <x-kharji.breadcrumb-item :title="__('Expends')" :href="route('expends.index')"/>
+        <x-kharji.breadcrumb-item :title="__('New Expend')" :active="true"/>
     </x-slot>
 
     <div class="card my-4">
@@ -16,11 +16,13 @@
                 </div>
                 <div class="form-group">
                     <label for="price">Price:</label>
-                    <input class="form-control" type="number" id="price" name="price" value="{{old('price',$expend->price)}}"/>
+                    <input class="form-control" type="number" id="price" name="price"
+                           value="{{old('price',$expend->price)}}"/>
                 </div>
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea class="form-control" id="description" name="description">{{old('description',$expend->description)}}</textarea>
+                    <textarea class="form-control" id="description"
+                              name="description">{{old('description',$expend->description)}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="attachments">Attachments:</label>
@@ -28,12 +30,13 @@
                 <div class="row">
                     <input type="hidden" id="removing-attachments" name="removing-attachments">
                     @if($expend->images)
-                    @foreach($expend->images as $image)
-                    <div class="col-xs-12 col-sm-6 col-md-4 staged-attachment-container">
-                        <img src="{{$image->file_path}}" alt="" class="img img-responsive">
-                        <a data-attachment-id="{{$image->id}}" class="btn btn-link remove-staged-attachment"><i class="fa fa-times"></i></a>
-                    </div>
-                    @endforeach
+                        @foreach($expend->images as $image)
+                            <div class="col-xs-12 col-sm-6 col-md-4 staged-attachment-container">
+                                <img src="{{$image->file_path}}" alt="" class="img img-responsive">
+                                <a data-attachment-id="{{$image->id}}" class="btn btn-link remove-staged-attachment"><i
+                                        class="fa fa-times"></i></a>
+                            </div>
+                        @endforeach
                     @endif
                 </div>
                 <div id="attachments-container"></div>
@@ -59,7 +62,7 @@
                 $(document).on('click', '.delete-attachment', function (event) {
                     $(event.currentTarget).parents('.form-group').remove()
                 });
-                $('.remove-staged-attachment').on('click',function (event){
+                $('.remove-staged-attachment').on('click', function (event) {
                     image_id = $(event.currentTarget).data('attachment-id');
                     $(event.currentTarget).parents('.staged-attachment-container').remove();
                     removing_attachments.push(image_id);

@@ -1,48 +1,53 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="h4 font-weight-bold">
-            {{ __('Expends') }}
-        </h2>
+    <x-slot name="header_breadcrumbs">
+        <x-kharji.breadcrumb-item :title="__('Dashboard')" href="/"/>
+        <x-kharji.breadcrumb-item :title="__('Teams')" :href="route('team.index')"/>
+        <x-kharji.breadcrumb-item :title="__('Edit Team')" :active="true"/>
     </x-slot>
 
     <div class="card my-4">
-        <div class="card-body">
-            <form action="{{route('expends.create')}}" type="post">
-                {{csrf_field()}}
-
-                <div class="form-group">
-                    <label for="title">Title:</label>
-                    <input class="form-control" id="title" name="title" value="{{old('title',$expend->title)}}"/>
+        <form action="{{route('team.update',['team_id'=>$team->id])}}" type="post">
+            @csrf
+            @method('put')
+            <div class="card-body row">
+                @csrf
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="title">عنوان:</label>
+                    <input class="form-control" id="title" name="title" value="{{old('title',$team->title)}}"/>
+                    @error('title')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
-                <div class="form-group">
-                    <label for="price">Price:</label>
-                    <input class="form-control" type="number" id="price" name="price" value="{{old('price',$expend->price)}}"/>
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="title">خصوصی:</label>
+                    <input type="checkbox" class="form-check" id="personal_team" name="personal_team"
+                           value="1" {{old('personal_team',$team->personal_team)?'checked':''}}/>
                 </div>
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea class="form-control" id="description" name="description">{{old('description',$expend->description)}}</textarea>
+                <div class="form-group col-12">
+                    <label for="description">توضیحات:</label>
+                    <textarea class="form-control" id="description"
+                              name="description">{{old('description',$team->description)}}</textarea>
+                    @error('description')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
-                <div class="form-group">
-                    <label for="attachments">Attachments:</label>
+                <div class="form-group col-6">
+                    <label for="members">اعضا:</label>
+                    <x-kharji.select2-users-multi id="members" name="members[]" :items="$team->members"/>
+                    @error('members')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
-                <div class="row">
-                    <input type="hidden" id="removing-attachments" name="removing-attachments">
-                    @if($expend->images)
-                    @foreach($expend->images as $image)
-                    <div class="col-xs-12 col-sm-6 col-md-4 staged-attachment-container">
-                        <img src="{{$image->file_path}}" alt="" class="img img-responsive">
-                        <a data-attachment-id="{{$image->id}}" class="btn btn-link remove-staged-attachment"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="card-footer">
+                <div class="form-group d-flex justify-content-between">
+                    <a href="{{route('expends.index')}}" class="btn btn-danger px-4">لغو</a>
+                    <div>
+                        <button class="btn btn-success px-4" value="submit">ثبت</button>
                     </div>
-                    @endforeach
-                    @endif
                 </div>
-                <div id="attachments-container"></div>
-                <span><a id="add-attachment-btn" class="btn btn-link text-success"><i class="fa fa-plus"></i></a></span>
-                <div class="form-group d-flex justify-content-center">
-                    <button class="btn btn-success">Submit</button>
-                </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
     @push('scripts')
         <script>
@@ -59,7 +64,7 @@
                 $(document).on('click', '.delete-attachment', function (event) {
                     $(event.currentTarget).parents('.form-group').remove()
                 });
-                $('.remove-staged-attachment').on('click',function (event){
+                $('.remove-staged-attachment').on('click', function (event) {
                     image_id = $(event.currentTarget).data('attachment-id');
                     $(event.currentTarget).parents('.staged-attachment-container').remove();
                     removing_attachments.push(image_id);

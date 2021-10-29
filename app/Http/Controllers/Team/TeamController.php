@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Team;
 
 use App\Http\Controllers\Controller;
+use App\Http\Features\Team\DeleteTeamFeature;
 use App\Http\Features\Team\StoreTeamFeature;
 use App\Models\Team\Team;
 use Illuminate\Http\Request;
@@ -40,7 +41,8 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $team = StoreTeamFeature::handle($request);
-        return redirect()->back()->with('action-result', ['success' => true, 'message' => __('Team Created')]);
+        return redirect()->route('team.index')
+            ->with('action-result', ['success' => true, 'message' => __('Team Created')]);
     }
 
     /**
@@ -58,11 +60,12 @@ class TeamController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param \App\Models\Team\Team $team
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit(Team $team)
+    public function edit($team_id)
     {
-        //
+        $team = Team::findOrFail($team_id);
+        return view('teams.edit', compact('team'));
     }
 
     /**
@@ -80,11 +83,12 @@ class TeamController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Team\Team $team
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function destroy(Team $team)
+    public function destroy($team_id)
     {
-        //
+        $result = DeleteTeamFeature::handle($team_id);
+        return redirect()->route('team.index')
+            ->with('action-result', ['success' => true, 'message' => __('Team Deleted')]);
     }
 }
