@@ -41,7 +41,7 @@ class UserController extends Controller
         $users = User::notSelf()
             ->where(function ($query) use ($request){
                 $query->where('name', 'like', "%{$request->term}%")
-                    ->orWhere('email', 'like', "%{$request->term}%")
+                    ->orWhere('email', 'like', "%{$request->term}%");
             })
             ->get();
 
