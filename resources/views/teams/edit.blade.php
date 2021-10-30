@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="card my-4">
-        <form action="{{route('team.update',['team_id'=>$team->id])}}" type="post">
+        <form action="{{route('team.update',['team_id'=>$team->id])}}" method="post">
             @csrf
             @method('put')
             <div class="card-body row">
