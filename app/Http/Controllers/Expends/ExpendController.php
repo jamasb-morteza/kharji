@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Expends;
 
 use App\Http\Controllers\Controller;
 use App\Models\Expend;
+use App\Models\Team\Team;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
@@ -34,12 +35,12 @@ class ExpendController extends Controller
     {
 
         $validatedData = $request->validate([
-            'team_id' => 'required',
+            'team' => 'required',
             'attachments' => 'max::50',
             'attachments.*' => 'mimes:jpg,jpeg,pdf,gif,png',
             'price' => 'numeric'
         ]);
-
+        $team = Team::where('slug', $request->team)->firstOrFail();
         $carbon_spend_at = !empty($request->spend_at_date) ?
             Jalalian::fromFormat('Y/m/d', $request->spend_at_date)->toCarbon() :
             Carbon::today();
@@ -47,7 +48,7 @@ class ExpendController extends Controller
 
         $expend = Expend::create([
             'user_id' => auth()->user()->id,
-            'team_id' => $request->team_id,
+            'team_id' => $team->id,
             'title' => $request->title,
             'price' => $request->price,
             'description' => $request->description,
