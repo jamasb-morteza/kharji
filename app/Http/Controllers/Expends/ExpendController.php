@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Expends;
 
 use App\Http\Controllers\Controller;
 use App\Models\Expend;
-use App\Models\File;
-use App\Models\Team\Team;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
@@ -36,6 +34,7 @@ class ExpendController extends Controller
     {
 
         $validatedData = $request->validate([
+            'team_id' => 'required',
             'attachments' => 'max::50',
             'attachments.*' => 'mimes:jpg,jpeg,pdf,gif,png',
             'price' => 'numeric'
@@ -48,6 +47,7 @@ class ExpendController extends Controller
 
         $expend = Expend::create([
             'user_id' => auth()->user()->id,
+            'team_id' => $request->team_id,
             'title' => $request->title,
             'price' => $request->price,
             'description' => $request->description,
