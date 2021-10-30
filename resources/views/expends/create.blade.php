@@ -9,7 +9,7 @@
         <form action="{{route('expends.store')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="card-header">
-                <h4>{{__('Edit Team')}}: {{$team->title}}</h4>
+                <h4>{{__('Spend Some Money :-)')}}</h4>
             </div>
             <div class="card-body row">
                 <div class="form-group col-md-6 col-xs-12">
