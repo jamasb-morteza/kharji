@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Team;
 use App\Http\Controllers\Controller;
 use App\Http\Features\Team\DeleteTeamFeature;
 use App\Http\Features\Team\StoreTeamFeature;
+use App\Http\Features\Team\UpdateTeamFeature;
 use App\Models\Team\Team;
 use Illuminate\Http\Request;
 
@@ -72,12 +73,15 @@ class TeamController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Team\Team $team
-     * @return \Illuminate\Http\Response
+     * @param int $team
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Team $team)
+    public function update(Request $request, $team_id)
     {
         //
+        $team = UpdateTeamFeature::handle($team_id, $request);
+        return redirect()->route('team.index')
+            ->with('action-result', ['success' => true, 'message' => __('Team Updated')]);
     }
 
     /**
