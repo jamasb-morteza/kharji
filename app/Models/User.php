@@ -77,7 +77,7 @@ class User extends Authenticatable
 
     public function scopeNotSelf(Builder $query)
     {
-        return $query->where('user_id', '!=', auth()->id());
+        return $query->where('id', '!=', auth()->id());
     }
 
 }
