@@ -16,7 +16,7 @@ class UpdateTeamFeature
         if ($team) {
             $team->update([$request->all()]);
             $validate = ValidateTeamRequestForStoreAction::handle($request->only(['title', 'members']));
-            $team = StoreTeamToDBAction::handle($request->except(['_token', 'members']), $team->id);
+            $team = StoreTeamToDBAction::handle($request->except(['_token', '_method', 'members']), $team->id);
             AttachMemberToTeamAction::handle($team->id, $request->members);
         }
         return $team;
