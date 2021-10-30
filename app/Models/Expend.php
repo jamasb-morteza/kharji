@@ -13,7 +13,7 @@ class Expend extends Model
 
     public $dates = ['created_at', 'updated_at', 'spend_at'];
     public $jalali_dates = ['created_at', 'updated_at', 'spend_at'];
-    protected $fillable = ['user_id', 'title', 'price', 'description', 'spend_at'];
+    protected $fillable = ['user_id','team_id', 'title', 'price', 'description', 'spend_at'];
 
     public function user()
     {
