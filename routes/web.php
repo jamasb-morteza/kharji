@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Expends\ExpendController;
-use App\Http\Controllers\Users\UserController;
 use App\Http\Controllers\Team\TeamController;
+use App\Http\Controllers\Users\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +17,9 @@ use App\Http\Controllers\Team\TeamController;
 */
 
 Route::get('/', function () {
+    return redirect()->route('login');
     return view('welcome');
+
 });
 
 Route::group(['middleware' => 'auth'], function ($router) {
