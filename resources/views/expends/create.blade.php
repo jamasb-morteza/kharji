@@ -8,7 +8,10 @@
     <div class="card my-4">
         <form action="{{route('expends.store')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
-            <div class="row">
+            <div class="card-header">
+                <h4>{{__('Edit Team')}}: {{$team->title}}</h4>
+            </div>
+            <div class="card-body row">
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="team">تیم</label>
                     <select name="team" id="team" class="form-control">
