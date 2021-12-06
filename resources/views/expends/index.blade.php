@@ -4,7 +4,8 @@
         <x-kharji.breadcrumb-item :title="__('Expends')" :active="true"/>
     </x-slot>
     <x-slot name="subheader_nav_link">
-        <x-kharji.subheader-nav-link class="text-success" :href="route('expends.create')" fa-icon="fa fa-plus" :title="__('New Expend')"/>
+        <x-kharji.subheader-nav-link class="text-success" :href="route('expends.create')" fa-icon="fa fa-plus"
+                                     :title="__('New Expend')"/>
     </x-slot>
 
     <div class="card my-4">
@@ -34,7 +35,9 @@
                             <a href="#" class="btn btn-link text-primary">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <form action="delete">
+                            <form action="{{route('expends.destroy',['expend_id'=>$expend->id])}}" method="post">
+                                @method('delete')
+                                @csrf
                                 <button class="btn btn-link text-danger">
                                     <i class="fa fa-trash"></i>
                                 </button>
