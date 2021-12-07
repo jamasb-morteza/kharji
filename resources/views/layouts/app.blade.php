@@ -20,6 +20,7 @@
     <script src="{{asset('/plugins/jalali_date_picker/jalalidatepicker.min.js')}}"></script>
     <script src="{{asset('/plugins/autoNumeric4.2/autonumeric4.1.js')}}"></script>
     <script src="{{asset('/plugins/select2/dist/js/select2.min.js')}}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{asset('/js/kharji.js')}}"></script>
 </head>
 <body class="c-app font-sans antialiased">
@@ -84,11 +85,11 @@
             <div>
                 <a href="https://jetstream.laravel.com/1.x/introduction.html">Jetstream</a> © 2020 Laravel.
             </div>
-            <div class="ml-auto">Powered by&nbsp;<a href="https://coreui.io/">CoreUI</a></div>
+            <div class="ml-auto">Powered by&nbsp;<a href="https://jamasb.me/">JamasbMe</a></div>
         </footer>
     </div>
 </div>
-
+<x-kharji.alerts-script/>
 @stack('scripts')
 </body>
 </html>

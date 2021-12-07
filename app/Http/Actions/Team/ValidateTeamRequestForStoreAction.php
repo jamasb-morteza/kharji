@@ -7,13 +7,13 @@ class ValidateTeamRequestForStoreAction
     public static function handle(array $request)
     {
         return \Validator::validate($request, [
-            'title' => 'required|min:5|max:64',
+            'title' => 'required|min:3|max:64',
             'members' => 'array',
         ], [
             'title' => [
                 'required' => 'عنوان الزامی',
-                'min' => 'حداقل 5 حرف',
-                'max' => 'حداکثر 6 حرف',
+                'min' => 'حداقل 3 حرف',
+                'max' => 'حداکثر 64 حرف',
             ],
             'members' => [
                 'اعضا نامعتبر'

@@ -82,8 +82,8 @@ class ExpendController extends Controller
     {
         $expend = Expend::find($expend_id);
         if ($expend) {
-            $expend->create([
-                'user_id' => auth()->user()->id,
+            $expend->update([
+                'user_id' => !empty($request->user_id) ? $request->user_id : auth()->user()->id,
                 'title' => $request->title,
                 'price' => $request->price,
                 'description' => $request->description,
@@ -103,9 +103,21 @@ class ExpendController extends Controller
     public function destroy($expend_id)
     {
         $expend = Expend::find($expend_id);
+        return redirect()->back()->with('action-result', [
+            'success' => true,
+            'message' => __('expends.Expend updated successfully')
+        ]);
         if ($expend) {
-            $expend->files()->delete();
-            $expend->details()->delete();
+            if (!empty($expend->attachments)) {
+                foreach ($expend->attachments as $file) {
+                    try {
+                        unlink(public_path($file->file_path));
+                    } catch (\Exception $exception) {
+
+                    }
+                }
+            }
+            $expend->attachments()->delete();
             $expend->delete();
             return redirect()->back()->with('action-result', [
                 'success' => true,

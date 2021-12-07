@@ -37,6 +37,7 @@
                             <a href="{{route('team.edit',['team_id'=>$team->id])}}" class="btn btn-link text-primary">
                                 <i class="fa fa-edit"></i>
                             </a>
+
                             <form action="{{route('team.destroy',['team_id'=>$team->id])}}" method="post">
                                 @csrf
                                 @method('delete')

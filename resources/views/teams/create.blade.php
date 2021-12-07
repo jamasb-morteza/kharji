@@ -17,7 +17,7 @@
                     @enderror
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
-                    <label for="title">خصوصی:</label>
+                    <label for="personal_team">خصوصی:</label>
                     <input type="checkbox" class="form-control" id="personal_team" name="personal_team"
                            value="{{old('personal_team')}}"/>
                 </div>
