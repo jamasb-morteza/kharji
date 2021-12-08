@@ -35,13 +35,9 @@
                             <a href="#" class="btn btn-link text-primary">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <form action="{{route('expends.destroy',['expend_id'=>$expend->id])}}" method="post">
-                                @method('delete')
-                                @csrf
-                                <button class="btn btn-link text-danger">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
+                            @if(auth()->id() == $expend->user_id)
+                                <x-kharji.delete_item :route="route('expends.destroy',['expend_id'=>$expend->id])" title="حذف" />
+                            @endif
                         </td>
                     </tr>
                 @endforeach
