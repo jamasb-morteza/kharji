@@ -10,39 +10,45 @@
 
     <div class="card my-4">
         <div class="card-body">
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>{{__('Expend At')}}</th>
-                    <th>{{__('User')}}</th>
-                    <th>{{__('Title')}}</th>
-                    <th>{{__('Price')}}</th>
-                    <th>{{__('Description')}}</th>
-                    <th>{{__('Actions')}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($expends as $expend)
-                    <tr>
-                        <td>#</td>
-                        <td><span dir="ltr">{{$expend->jalali_spend_at->format('Y/m/d H:i:s')}}</span></td>
-                        <td>{{$expend->user->name}}</td>
-                        <td>{{$expend->title}}</td>
-                        <td>{{number_format($expend->price)}}</td>
-                        <td>{{$expend->description}}</td>
-                        <td class="d-inline-flex">
-                            <a href="#" class="btn btn-link text-primary">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            @if(auth()->id() == $expend->user_id)
-                                <x-kharji.delete_item :route="route('expends.destroy',['expend_id'=>$expend->id])" title="حذف" />
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+            <div class="row">
+                <div class="col-xs1-12 table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{__('Expend At')}}</th>
+                            <th>{{__('User')}}</th>
+                            <th>{{__('Title')}}</th>
+                            <th>{{__('Price')}}</th>
+                            <th>{{__('Description')}}</th>
+                            <th>{{__('Actions')}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($expends as $expend)
+                            <tr>
+                                <td>#</td>
+                                <td><span dir="ltr">{{$expend->jalali_spend_at->format('Y/m/d H:i:s')}}</span></td>
+                                <td>{{$expend->user->name}}</td>
+                                <td>{{$expend->title}}</td>
+                                <td>{{number_format($expend->price)}}</td>
+                                <td>{{$expend->description}}</td>
+                                <td class="d-inline-flex">
+                                    <a href="#" class="btn btn-link text-primary">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    @if(auth()->id() == $expend->user_id)
+                                        <x-kharji.delete_item
+                                            :route="route('expends.destroy',['expend_id'=>$expend->id])" title="حذف"/>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <div class="row justify-content-center d-flex">
                 {!! $expends->links() !!}
             </div>
