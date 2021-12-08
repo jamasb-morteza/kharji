@@ -8,7 +8,7 @@
                                      :title="__('New Expend')"/>
     </x-slot>
 
-    <div class="card my-4">
+    <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-xs1-12 table-responsive">

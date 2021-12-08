@@ -24,6 +24,14 @@
 .w-35px {
     max-width: 35px !important;
 }
+
 .w-30px {
     max-width: 30px !important;
 }
+
+@media only screen and (max-width: 576px) {
+    .p-sm-0 {
+        padding: 0!important;
+    }
+}
+

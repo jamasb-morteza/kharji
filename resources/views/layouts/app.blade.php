@@ -67,7 +67,7 @@
 
             <div class="container">
                 <div class="row fade-in">
-                    <div class="col">
+                    <div class="col p-sm-0">
                         {{ $slot }}
                     </div>
 
