@@ -15,19 +15,19 @@
                     <table class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>{{__('Expend At')}}</th>
-                            <th>{{__('User')}}</th>
-                            <th>{{__('Title')}}</th>
-                            <th>{{__('Price')}}</th>
-                            <th>{{__('Description')}}</th>
-                            <th>{{__('Actions')}}</th>
+                            <th class="text-center">#</th>
+                            <th class="text-center">{{__('Expend At')}}</th>
+                            <th class="text-center">{{__('User')}}</th>
+                            <th class="text-center">{{__('Title')}}</th>
+                            <th class="text-center">{{__('Price')}}</th>
+                            <th class="text-center">{{__('Description')}}</th>
+                            <th class="text-center">{{__('Actions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($expends as $expend)
+                        @foreach($expends as $key => $expend)
                             <tr>
-                                <td>#</td>
+                                <td>{{$expends->firstItem() + $key}}</td>
                                 <td><span dir="ltr">{{$expend->jalali_spend_at->format('Y/m/d H:i:s')}}</span></td>
                                 <td>{{$expend->user->name}}</td>
                                 <td>{{$expend->title}}</td>
