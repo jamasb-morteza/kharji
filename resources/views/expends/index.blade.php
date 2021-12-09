@@ -29,7 +29,10 @@
                             <tr>
                                 <td>{{$expends->firstItem() + $key}}</td>
                                 <td><span dir="ltr">{{$expend->jalali_spend_at->format('Y/m/d H:i:s')}}</span></td>
-                                <td>{{$expend->user->name}}</td>
+                                <td>
+                                    <img src="{{$expend->user->profile_photo_path}}" class="img img-thumbnail" alt="">
+                                    <span>{{$expend->user->name}}</span>
+                                </td>
                                 <td>{{$expend->title}}</td>
                                 <td>{{number_format($expend->price)}}</td>
                                 <td>{{$expend->description}}</td>
