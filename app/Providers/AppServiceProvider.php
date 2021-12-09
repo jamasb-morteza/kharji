@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Paginator::useBootstrap();
-        JetstrapFacade::useCoreUi3();
+        JetstrapFacade::useAdminLte3();
         \Schema::defaultStringLength(192);
     }
 }

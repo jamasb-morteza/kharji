@@ -17,7 +17,6 @@ mix.js('resources/js/app.js', 'public/js')
 
 // Dashboard theme assets...
 mix.js('resources/js/dashboard.js', 'public/js')
-mix.js('node_modules/jquery/dist/jquery.min.js', 'public/js')
     .sass('resources/sass/dashboard/dashboard.scss', 'public/css');
 
 if (mix.inProduction()) {

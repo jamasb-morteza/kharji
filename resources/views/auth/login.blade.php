@@ -44,27 +44,18 @@
                 </div>
 
                 <div class="mb-0">
-                    <div class="d-flex justify-content-start align-items-baseline">
-                        <x-button>
-                            {{ __('Log in') }}
-                        </x-button>
-
+                    <div class="d-flex justify-content-end align-items-baseline">
                         @if (Route::has('password.request'))
-                            <a class="text-muted ml-3" href="{{ route('password.request') }}">
+                            <a class="text-muted mr-3" href="{{ route('password.request') }}">
                                 {{ __('Forgot your password?') }}
                             </a>
                         @endif
 
-
+                        <x-button>
+                            {{ __('Log in') }}
+                        </x-button>
                     </div>
                 </div>
-                    <div class="mt-2">
-                        <div class="d-flex justify-content-start align-items-baseline">
-                            <a href="/oauth/google" class="btn btn-outline-primary">
-                                {{ __('Log in With Google') }}
-                            </a>
-                        </div>
-                    </div>
             </form>
         </div>
     </x-auth-card>

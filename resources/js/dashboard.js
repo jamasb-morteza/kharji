@@ -1,2 +1,2 @@
-import '@coreui/coreui/dist/js/coreui.bundle.min';
-
+require('overlayscrollbars/js/jquery.overlayScrollbars.min')
+require('admin-lte')
