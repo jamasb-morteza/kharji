@@ -30,7 +30,7 @@
 }
 
 @media only screen and (max-width: 576px) {
-    .p-sm-0 {
+    .p-xs-0 {
         padding: 0!important;
     }
 }
