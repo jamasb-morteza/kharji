@@ -7,10 +7,20 @@
         <x-kharji.subheader-nav-link class="text-success" :href="route('expends.create')" fa-icon="fa fa-plus"
                                      :title="__('New Expend')"/>
     </x-slot>
-
     <div class="card">
-        <div class="card-body">
-            <div class="row">
+        <div class="card-header">
+            <h5>
+                <a
+                    href="#table-panel-body"
+                    aria-controls="table-panel-body"
+                    data-toggle="collapse"
+                    aria-expanded="true">
+                    <span>لیست مخارج</span>
+                </a>
+            </h5>
+        </div>
+        <div class="card-body" >
+            <div class="row  collapse" id="table-panel-body">
                 <div class="col-xs1-12 table-responsive">
                     <table class="table table-striped table-hover">
                         <thead>
