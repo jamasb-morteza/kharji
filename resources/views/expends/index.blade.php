@@ -1,4 +1,9 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="h4 font-weight-bold">
+            {{ __('Expends') }}
+        </h2>
+    </x-slot>
     <x-slot name="header_breadcrumbs">
         <x-kharji.breadcrumb-item :title="__('Dashboard')" href="/"/>
         <x-kharji.breadcrumb-item :title="__('Expends')" :active="true"/>
