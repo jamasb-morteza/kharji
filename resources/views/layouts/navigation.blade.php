@@ -19,7 +19,7 @@
     <ul class="navbar-nav ml-auto">
         <!-- Authentication Links -->
         @auth
-            <x-dropdown id="navbarDropdown" class="user-menu">
+            <x-dropdown id="user_nav_dropdown" class="user-menu">
                 <x-slot name="trigger">
                     <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                 </x-slot>

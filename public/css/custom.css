@@ -35,3 +35,6 @@
     }
 }
 
+.navbar-nav > .user-menu > .dropdown-menu{
+    width: 150px;
+}

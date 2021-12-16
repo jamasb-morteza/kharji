@@ -12,6 +12,7 @@
         <x-kharji.subheader-nav-link class="text-success" :href="route('expends.create')" fa-icon="fa fa-plus"
                                      :title="__('New Expend')"/>
     </x-slot>
+    <x-slot name="page_content">
     <div class="card">
         <div class="card-header">
             <h5>
@@ -73,4 +74,5 @@
             </div>
         </div>
     </div>
+    </x-slot>
 </x-app-layout>
