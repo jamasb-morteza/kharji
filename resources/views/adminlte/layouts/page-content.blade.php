@@ -1,18 +1,16 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    {!! @$header??'Header' !!}
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-left">
-                    {!! @$header_breadcrumbs??'' !!}
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+    <div class="c-subheader justify-content-between px-3 mb-4">
+        <ol class="c-breadcrumb border-0 m-0 px-0 px-md-3">
+            @if(isset($header_breadcrumbs))
+                {!! $header_breadcrumbs !!}
+            @endif
+        </ol>
+        <div class="c-subheader-nav mfe-2">
+            @if(isset($subheader_nav_link))
+                {!! $subheader_nav_link !!}
+            @endif
+        </div>
     </div>
     <!-- /.content-header -->
 

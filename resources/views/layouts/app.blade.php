@@ -33,20 +33,29 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
 
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+
+    <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('/plugins/jalali_date_picker/jalalidatepicker.min.js')}}"></script>
+    <script src="{{asset('/plugins/autoNumeric4.2/autonumeric4.1.js')}}"></script>
+    <script src="{{asset('/plugins/select2/dist/js/select2.min.js')}}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{asset('/js/kharji.js')}}"></script>
+
     @yield('styles')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-<x-adminlte.preloader/>
+    <x-adminlte.preloader/>
 
-@include('adminlte.layouts.top-navigation')
+    @include('adminlte.layouts.top-navigation')
 
-<!-- Main Sidebar Container -->
-@include('adminlte.layouts.main-sidebar')
+    <!-- Main Sidebar Container -->
+    @include('adminlte.layouts.main-sidebar')
 
 <!-- Content Wrapper. Contains page content -->
-@include('adminlte.layouts.page-content')
+    @include('adminlte.layouts.page-content')
 <!-- /.content-wrapper -->
     @include('adminlte.layouts.footer')
 
@@ -55,7 +64,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

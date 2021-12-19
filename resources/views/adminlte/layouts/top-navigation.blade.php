@@ -148,5 +148,6 @@
             </x-dropdown>
         @endauth
     </ul>
+
 </nav>
 <!-- /.navbar -->
