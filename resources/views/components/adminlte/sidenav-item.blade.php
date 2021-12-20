@@ -1,6 +1,6 @@
 <li class="nav-item">
     <a href="{{isset($attributes['href'])?$attributes['href']:'#'}}"
-       class="nav-link {{isset($selected) && $selected===true?'active':''}}">
+       class="nav-link  {{Request::segment(1) == @$attributes['slug']?'active':''}}">
         @if(isset($icon))
             {!! $icon !!}
         @elseif(isset($attributes['iclass']))

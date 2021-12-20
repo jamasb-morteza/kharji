@@ -1,25 +1,24 @@
-<div class="small-box {{@$attributes['class']}}">
+<div class="small-box {{@$attributes['bgClass']??'bg-info'}}">
     <div class="inner">
-        @if(isset($attributes['header']))
-            <h3>{{$attributes['header']}}</h3>
-        @else
-            {!! @$header !!}
-        @endif
-        @if(isset($attributes['desc']))
-            <p>{{$attributes['desc']}}</p>
-        @else
-            {!! @$desc !!}
-        @endif
+        <h3>{{@$title}}</h3>
+        <p>{{@$text}}</p>
     </div>
     <div class="icon">
-        @if(isset($attributes['iclass']))
-            <i class="{{$attributes['iclass']}}"></i>
-        @else
-            {!! @$icon !!}
-        @endif
+        <i class="{{@$iclass??''}}"></i>
     </div>
-    <a href="{{@$attributes->href??'#'}}" class="small-box-footer">
-        {{@$attributes->atext}}
-        <i class="fas fa-arrow-circle-left"></i>
-    </a>
+    <a href="{{@$href}}" class="small-box-footer">
+        {{@$linkText}}
+        <i class="fas fa-arrow-circle-left"></i></a>
 </div>
+{{--
+
+usage
+<x-adminlte.small-box
+    bgClass="bg-danger"
+    title="150"
+    :text="__('New Orders 2')"
+    iclass="ion ion-bag"
+    href="#"
+    linkText="Show More"
+/>
+--}}

@@ -15,6 +15,7 @@ class ExpendController extends Controller
     public function index()
     {
         $expends = Expend::with('user')->paginate(20);
+
         return view('expends.index', compact('expends'));
     }
 
@@ -40,10 +41,12 @@ class ExpendController extends Controller
             'attachments.*' => 'mimes:jpg,jpeg,pdf,gif,png',
             'price' => 'numeric'
         ]);
+
         $team = Team::where('slug', $request->team)->firstOrFail();
         $carbon_spend_at = !empty($request->spend_at_date) ?
             Jalalian::fromFormat('Y/m/d', $request->spend_at_date)->toCarbon() :
             Carbon::today();
+
         $carbon_spend_at->setTimeFromTimeString($request->spend_at_time);
 
         $expend = Expend::create([
@@ -54,6 +57,7 @@ class ExpendController extends Controller
             'description' => $request->description,
             'spend_at' => $carbon_spend_at ?? Carbon::now()
         ]);
+
         $insert = [];
         if ($request->hasfile('attachments')) {
             foreach ($request->file('attachments') as $key => $file) {

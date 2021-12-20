@@ -11,8 +11,8 @@
         </p>
     </a>
     <ul class="nav nav-treeview">
-        @if(isset($items))
-            {!! $items !!}
+        @if(isset($slot))
+            {!! $slot !!}
         @endif
     </ul>
 </li>

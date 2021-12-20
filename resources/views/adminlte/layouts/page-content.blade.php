@@ -17,7 +17,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            {!! @$page_content !!}
+            {!! @$slot !!}
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

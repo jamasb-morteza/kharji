@@ -69,9 +69,11 @@
     background-color: transparent;
     border-color: #d8dbe0;
 }
+
 [dir="rtl"] .mfe-2 {
     margin-left: 0.5rem !important;
 }
+
 .c-subheader-nav {
     display: flex;
     flex-direction: row;
@@ -80,4 +82,17 @@
     padding: 0;
     margin-bottom: 0;
     list-style: none;
+}
+
+
+.maximized-card {
+    display: flex;
+}
+
+.maximized-card button[data-card-widget="collapse"], .maximized-card button[data-card-widget="remove"] {
+    display: none !important;
+}
+
+.maximized-card .direct-chat-messages, .maximized-card .direct-chat-contacts {
+    height: 100% !important;
 }

@@ -14,7 +14,7 @@
             <div class="card-body row">
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="team">تیم</label>
-                    <select name="team" id="team" class="form-control">
+                    <select name="team" id="team" class="form-control form-control-lg">
                         @foreach($teams as $team)
                             <option value="{{$team->slug}}">{{$team->title}}</option>
                         @endforeach
@@ -24,20 +24,20 @@
             <div class="card-body row">
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="title">عنوان:</label>
-                    <input class="form-control" id="title" name="title" value="{{old('title')}}"/>
+                    <input class="form-control form-control-lg" id="title" name="title" value="{{old('title')}}"/>
                 </div>
                 <div class="form-group col-md-6 col-xs-12" dir="ltr">
                     <label for="price">مبلغ:</label>
-                    <input class="form-control number-separator" id="price" name="price" value="{{old('price')}}"/>
+                    <input class="form-control number-separator form-control-lg" id="price" name="price" value="{{old('price')}}"/>
                 </div>
                 <div class="form-group col-md-6 col-xs-12" dir="ltr">
                     <label for="spend_at_date">تاریخ:</label>
-                    <input class="form-control jalali_date_picker" id="spend_at_date" name="spend_at_date"
+                    <input class="form-control jalali_date_picker form-control-lg" id="spend_at_date" name="spend_at_date"
                            value="{{old('spend_at_date',\Morilog\Jalali\Jalalian::now()->format('Y/m/d'))}}" data-jdp/>
                 </div>
                 <div class="form-group col-md-6 col-xs-12" dir="ltr">
                     <label for="spend_at_time">زمان:</label>
-                    <input type="time" class="form-control" id="spend_at_time" name="spend_at_time"
+                    <input type="time" class="form-control  form-control-lg" id="spend_at_time" name="spend_at_time"
                            value="{{old('spend_at_time',\Carbon\Carbon::now()->format('H:i:s'))}}"/>
                 </div>
                 <div class="form-group col-12">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group col-12">
                     <label for="attachments">پیوست‌ها:</label>
-                    <input type="file" name="attachments[]" class="form-control-file">
+                    <input type="file" name="attachments[]">
                 </div>
                 <div class="col-12">
                     <div id="attachments-container"></div>
