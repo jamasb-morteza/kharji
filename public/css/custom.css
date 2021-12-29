@@ -96,3 +96,27 @@
 .maximized-card .direct-chat-messages, .maximized-card .direct-chat-contacts {
     height: 100% !important;
 }
+
+#dashboard-header-user-menu > a.nav-link {
+    padding-top: 0
+}
+
+.dark-mode .c-subheader {
+    background-color: #4b545c;
+}
+.dark-mode .text-success:hover{
+    color: #008000 !important;
+}
+.main-header .nav-link i{
+    font-size:1.2rem;
+}
+.main-header .nav-link .badge {
+    left:-1px;
+    top:3px
+}
+table.table td{
+    vertical-align: middle;
+}
+table.table th{
+    vertical-align: middle;
+}

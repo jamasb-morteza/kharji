@@ -83,3 +83,6 @@
 [class*="icheck-"] > label{
     padding-left: 22px !important;
 }
+#dashboard-header-user-menu > a.nav-link {
+    padding-top: 0
+}

@@ -124,27 +124,26 @@
             </a>
         </li>
         @auth
-            <x-dropdown id="navbarDropdown" class="user-menu">
+            <x-dropdown id="dashboard-header-user-menu" class="user-menu">
                 <x-slot name="trigger">
                     <img class="d-none img-size-32 ml-1 d-md-inline img-circle elevation-2"
                          src="{{ Auth::user()->avatar }}"
                          alt="{{Auth::user()->name}}">
                     <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                 </x-slot>
-
-                <x-slot name="content">
-                    <!-- Authentication -->
-                    <form method="POST" id="logout-form" action="{{ route('logout') }}">
-                        @csrf
-                        <x-dropdown-link
-                            href="{{ route('logout') }}"
-                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                <form method="POST" id="logout-form" action="{{ route('logout') }}">
+                    @csrf
+                    <x-dropdown-link
+                        class="py-3"
+                        href="{{ route('logout') }}"
+                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        <span >
                             <i class="fa fa-lock ml-2"></i>
                             <span>{{ __('Log Out') }}</span>
                             <span class="float-left text-muted text-sm">3 mins</span>
-                        </x-dropdown-link>
-                    </form>
-                </x-slot>
+                        </span>
+                    </x-dropdown-link>
+                </form>
             </x-dropdown>
         @endauth
     </ul>

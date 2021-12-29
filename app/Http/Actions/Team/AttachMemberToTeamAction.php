@@ -9,18 +9,24 @@ class AttachMemberToTeamAction
 {
     public static function handle($team_id, $members)
     {
-        Membership::where('team_id', $team_id)
-            ->whereNotIn('user_id', $members)->delete();
+        $membership_query = Membership::where('team_id', $team_id);
 
-        foreach ($members as $member) {
-            $data[] = [
-                'team_id' => $team_id,
-                'user_id' => $member,
-                'confirmed' => 0,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ];
+
+        $data = [];
+        if (!empty($members)) {
+            $membership_query->whereNotIn('user_id', $members);
+            foreach ($members as $member) {
+                $data[] = [
+                    'team_id' => $team_id,
+                    'user_id' => $member,
+                    'confirmed' => 0,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
+                ];
+            }
+
         }
+
         array_unshift($data, [
             'team_id' => $team_id,
             'user_id' => auth()->id(),
@@ -28,6 +34,8 @@ class AttachMemberToTeamAction
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        $membership_query->delete();
         return Membership::query()->insertOrIgnore($data);
     }
 }
