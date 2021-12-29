@@ -5,6 +5,9 @@
         <x-kharji.breadcrumb-item :title="__('Create New')" :active="true"/>
     </x-slot>
 
+    <x-adminlte.card-simple :title="__('Spend Some Money')">
+
+    </x-adminlte.card-simple>
     <div class="card my-4">
         <form action="{{route('expends.store')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
@@ -28,11 +31,13 @@
                 </div>
                 <div class="form-group col-md-6 col-xs-12" dir="ltr">
                     <label for="price">مبلغ:</label>
-                    <input class="form-control number-separator form-control-lg" id="price" name="price" value="{{old('price')}}"/>
+                    <input class="form-control number-separator form-control-lg" id="price" name="price"
+                           value="{{old('price')}}"/>
                 </div>
                 <div class="form-group col-md-6 col-xs-12" dir="ltr">
                     <label for="spend_at_date">تاریخ:</label>
-                    <input class="form-control jalali_date_picker form-control-lg" id="spend_at_date" name="spend_at_date"
+                    <input class="form-control jalali_date_picker form-control-lg" id="spend_at_date"
+                           name="spend_at_date"
                            value="{{old('spend_at_date',\Morilog\Jalali\Jalalian::now()->format('Y/m/d'))}}" data-jdp/>
                 </div>
                 <div class="form-group col-md-6 col-xs-12" dir="ltr">
